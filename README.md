@@ -2,7 +2,7 @@
 
 ## Description
 
-Shortway is a Flutter application designed to demonstrate field pathfinding functionality. Utilizing a combination of technologies such as Flutter, Dio for networking, and MobX for state management, Shortway allows users to input a base API URL to fetch field data and calculate the shortest paths.
+ShortWay is a Flutter application designed to demonstrate field pathfinding functionality. Utilizing a combination of technologies such as Flutter, Dio for networking, and MobX for state management, Shortway allows users to input a base API URL to fetch field data and calculate the shortest paths.
 
 ## Getting Started
 
