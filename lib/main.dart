@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:shortway/core/network/network_connection_stream.dart';
 import 'package:shortway/injection_container.dart';
-import 'package:shortway/presentation/views/home_page/home_page.dart';
+import 'package:shortway/router/router.dart';
 
 void main() async {
   // Initialize the dependency injection container.
@@ -11,14 +13,38 @@ void main() async {
 }
 
 /// The root widget of the application.
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  final appRouter = AppRouter();
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      sl<NetworkConnectionStream>().startListen();
+    } else if (state == AppLifecycleState.inactive) {
+      sl<NetworkConnectionStream>().stopListen();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      routerConfig: appRouter.config(),
+      theme: ThemeData(useMaterial3: false),
     );
   }
 }
