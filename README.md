@@ -6,11 +6,13 @@ ShortWay is a Flutter application designed to demonstrate field pathfinding func
 
 ## Getting Started
 
-To run this project, use the following command to watch for file changes and regenerate necessary files automatically:
+To run this project, follow these simple steps:
 
-```shell
-dart run build_runner watch --delete-conflicting-outputs
-```
+1. Clone the repository.
+2. Navigate to the project's root directory.
+3. Run `flutter pub get` to install the dependencies.
+4. Start the build runner with `dart run build_runner watch --delete-conflicting-outputs` to generate any necessary files.
+5. Run the app with `flutter run`.
 
 ## Setup
 Ensure you have Flutter SDK installed with version `>=3.3.1 <4.0.0`. Before running the project, add the necessary dependencies in your `pubspec.yaml`.
